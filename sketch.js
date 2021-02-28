@@ -26,40 +26,45 @@ function setup(){
 
 
     //create box sprite and give velocity
- box=createSprite(random(20,750),500,30,30);
+ box=createSprite(random(20,750),100,30,30);
  box.shapeColor="white";
  box.velocityY=4;
+ box.velocityX=4;
  music.play();
 }
 
 function draw() {
     background(rgb(169,169,169));
     
-    //create edgeSprite
-   // 
+   var edges=createEdgeSprites();
+   if(box.bounceOff(edges)){
+       box.shapeColor="white";
+   }
+
 
  
 
     //add condition to check if box touching surface and make it box
     if(box.isTouching(surface1) && box.bounceOff(surface1)){
         box.shapeColor="green";
-        box.velocityY=0;
-        music.stop();
+        //box.velocityY=0;
+       // music.stop();
     }
     if(box.isTouching(surface2) && box.bounceOff(surface2)){
         box.shapeColor="yellow";
         box.velocityY=0;
+        box.velocityX=0
         music.stop();
     }
     if(box.isTouching(surface3) && box.bounceOff(surface3)){
         box.shapeColor="red";
-        box.velocityY=0;
-        music.stop();
+       // box.velocityY=0;
+       // music.stop();
     }
     if(box.isTouching(surface4) && box.bounceOff(surface4)){
         box.shapeColor="blue";
-        box.velocityY=0;
-        music.stop();
+        //box.velocityY=0;
+       // music.stop();
     }
     drawSprites();
 }
